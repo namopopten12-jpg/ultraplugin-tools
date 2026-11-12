@@ -1,0 +1,7 @@
+dist/
+build/
+*.spec
+*.onnx
+ffmpeg*
+ffprobe*
+__pycache__/
