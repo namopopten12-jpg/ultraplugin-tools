@@ -10,4 +10,4 @@ ultra-matte --in clip.mov --out matte.mp4 --size 720
 ```
 ความคืบหน้าพิมพ์เป็น JSON ทีละบรรทัด (`{"p":0.42,...}` → `{"done":true,...}`)
 
-ไฟล์ .zip สำหรับ Windows/Mac สร้างอัตโนมัติด้วย GitHub Actions เมื่อ push tag `v*` → อยู่ในหน้า Releases
+ไฟล์ .zip สำหรับ Windows/Mac สร้างอัตโนมัติด้วย GitHub Actions ทุกครั้งที่แก้ matte.py → อยู่ในหน้า Releases (ล่าสุดเสมอ)
