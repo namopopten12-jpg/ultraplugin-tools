@@ -13,7 +13,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest]
+        include:
+          - { os: windows-latest, zip: ultra-matte-win.zip }
+          - { os: macos-latest, zip: ultra-matte-mac-arm64.zip }
+          - { os: macos-13, zip: ultra-matte-mac-x64.zip }
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -63,11 +66,11 @@ jobs:
         shell: bash
         run: |
           cd dist
-          if [ "$RUNNER_OS" = "Windows" ]; then 7z a ../ultra-matte-win.zip ultra-matte; else zip -qry ../ultra-matte-mac.zip ultra-matte; fi
+          if [ "$RUNNER_OS" = "Windows" ]; then 7z a ../${{ matrix.zip }} ultra-matte; else zip -qry ../${{ matrix.zip }} ultra-matte; fi
 
       - uses: actions/upload-artifact@v4
         with:
-          name: ultra-matte-${{ runner.os }}
+          name: ${{ matrix.zip }}
           path: ultra-matte-*.zip
 
       - uses: softprops/action-gh-release@v2
